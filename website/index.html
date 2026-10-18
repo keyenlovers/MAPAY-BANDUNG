@@ -1,0 +1,1183 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAPAY — Bandung 15-Minute Accessibility</title>
+  <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="icon" type="image/png" href="/static/mapay icon.png.png">
+  <style>
+    :root {
+      --ink: #173b35;
+      --green: #28594c;
+      --mint: #e9f1e9;
+      --paper: #f7f7f1;
+      --muted: #75827b;
+      --line: #dfe5dc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+    }
+
+    header {
+      padding: 19px 5%;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .brand {
+      font-size: 25px;
+      font-weight: 850;
+      letter-spacing: 2px;
+    }
+
+    .brand span { color: #60af52; }
+
+    .tag {
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    main {
+      max-width: 1400px;
+      padding: 28px 5%;
+      margin: auto;
+    }
+
+    .intro {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      color: #668566;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(27px, 4vw, 43px);
+      line-height: 1.08;
+      margin: 9px 0;
+      letter-spacing: -1.5px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 8px 0 0;
+      font-size: 14px;
+    }
+
+    .status {
+      white-space: nowrap;
+      font-size: 12px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: white;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    
+.map-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+#corridorComparison {
+  margin-top: 0;
+  padding: 20px;
+}
+
+
+    .panel, .map-panel, .result-panel {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .panel { padding: 20px; }
+
+    h2 {
+      font-size: 15px;
+      margin: 0 0 17px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 17px 0 8px;
+    }
+
+    input, select {
+      width: 100%;
+      border: 1px solid #dce3da;
+      border-radius: 9px;
+      padding: 12px;
+      font-size: 13px;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    input:focus, select:focus {
+      outline: 2px solid #b8d1b5;
+      border-color: var(--green);
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      border-radius: 9px;
+      padding: 12px;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .secondary {
+      margin-top: 8px;
+      width: 100%;
+      color: var(--green);
+      background: var(--mint);
+    }
+
+    .primary {
+      margin-top: 20px;
+      width: 100%;
+      background: var(--green);
+      color: white;
+      padding: 14px;
+    }
+
+    button:disabled { opacity: .55; cursor: wait; }
+
+    .hint {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+
+    .map-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .map-head strong { font-size: 13px; }
+    .map-head span { font-size: 11px; color: var(--muted); }
+
+    #map {
+      height: 520px;
+      width: 100%;
+      background: #e8eee7;
+    }
+
+    .map-note {
+      padding: 10px 14px;
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .results { margin-top: 18px; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .stat {
+      padding: 17px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 9px;
+    }
+
+    .stat strong { font-size: 27px; }
+
+    .result-panel { padding: 18px; }
+
+    .category-counts {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0 18px;
+    }
+
+    .chip {
+      background: var(--mint);
+      border-radius: 20px;
+      padding: 7px 10px;
+      font-size: 11px;
+    }
+
+    .facility-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .facility {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      min-width: 0;
+    }
+
+    .facility strong {
+      display: block;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+      margin-bottom: 7px;
+    }
+
+    .facility small {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .empty {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+      padding: 16px 0;
+    }
+
+    footer {
+      max-width: 1400px;
+      margin: auto;
+      padding: 5px 5% 30px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 850px) {
+      .layout { grid-template-columns: 1fr; }
+      .intro { align-items: start; flex-direction: column; }
+      #map { height: 420px; }
+      .tag { display: none; }
+    }
+
+    @media (max-width: 520px) {
+      main { padding: 20px 4%; }
+      .stats { gap: 7px; }
+      .stat { padding: 12px; }
+      .stat strong { font-size: 22px; }
+      .facility-list { grid-template-columns: 1fr; }
+      #map { height: 370px; }
+    }
+
+    
+.search-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.search-wrap input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  background: white;
+  color: #26332f;
+  border: 1px solid #e1e6e3;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.suggestions.hidden {
+  display: none;
+}
+
+.suggestion-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #edf0ee;
+}
+
+.suggestion-item:hover {
+  background: #f1f6f3;
+}
+
+.suggestion-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.suggestion-address {
+  color: #77817c;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  margin: 17px 0 8px;
+}
+
+.toggle-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+
+.corridor-legend {
+  background: white;
+  border: 1px solid #dfe5dc;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.corridor-legend h3 {
+  margin: 0 0 14px;
+  font-size: 14px;
+}
+
+.corridor-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.corridor-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.corridor-dot.ns {
+  background: #8055b8;
+}
+
+.corridor-dot.ew {
+  background: #3984c6;
+}
+
+.corridor-item p {
+  margin: 4px 0;
+  font-size: 12px;
+}
+
+.corridor-item small,
+.legend-note {
+  color: #75827b;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.legend-note {
+  border-top: 1px solid #dfe5dc;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 25px;
+  font-weight: 850;
+  letter-spacing: 2px;
+}
+
+.brand img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  color: var(--ink);
+}
+
+.brand-text span {
+  color: #60af52;
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    
+<div class="brand">
+  <img src="/static/mapay icon.png.png" alt="MAPAY icon">
+  <span class="brand-text">MAP<span>AY.</span></span>
+</div>
+
+    <div class="tag">BANDUNG · 15-MINUTE ACCESSIBILITY</div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div>
+        <div class="eyebrow">Explore your city</div>
+        <h1>Bandung, lebih dekat.</h1>
+        <p>
+          Jelajahi akses fasilitas di sekitar titik pilihanmu.
+          Cari alamat atau klik peta, pilih moda perjalanan, lalu
+          lihat fasilitas yang diperkirakan dapat dijangkau dalam 15 menit.
+        </p>
+      </div>
+      <div class="status" id="status">● Menghubungkan ke server...</div>
+    </section>
+
+    <section class="layout">
+      <aside class="panel">
+        <h2>Atur perjalanan</h2>
+
+        <label for="address">Titik awal / alamat</label>
+        
+<div class="search-wrap">
+  <input
+    id="address"
+    type="text"
+    placeholder="Cari nama tempat atau alamat..."
+    autocomplete="off"
+  />
+
+  <div id="suggestions" class="suggestions hidden"></div>
+</div>
+
+<button class="secondary" id="searchBtn">Cari alamat</button>
+
+
+        <label for="mode">Moda perjalanan</label>
+        <select id="mode">
+          <option value="walk">Jalan kaki</option>
+          <option value="bike">Sepeda</option>
+        </select>
+
+        <label for="category">Jenis fasilitas</label>
+        <select id="category">
+          <option value="Semua">Semua fasilitas</option>
+          <option value="Pendidikan">Pendidikan</option>
+          <option value="Kesehatan">Kesehatan</option>
+          <option value="RTH">Ruang terbuka hijau</option>
+          <option value="Belanja">Belanja</option>
+          
+        </select>
+
+        
+<label class="toggle-row" for="toggleLRT">
+  <input type="checkbox" id="toggleLRT" checked>
+  Tampilkan titik referensi LRT
+</label>
+
+
+<div class="corridor-legend">
+  <h3>Keterangan Koridor LRT</h3>
+
+  <div class="corridor-item">
+    <span class="corridor-dot ns"></span>
+    <div>
+      <strong>NS — North–South</strong>
+      <p>Koridor Utara–Selatan</p>
+      <small>Babakan Siliwangi – Margahayu</small>
+    </div>
+  </div>
+
+  <div class="corridor-item">
+    <span class="corridor-dot ew"></span>
+    <div>
+      <strong>EW — East–West</strong>
+      <p>Koridor Timur–Barat</p>
+      <small>Terminal Leuwipanjang – Tegalluar</small>
+    </div>
+  </div>
+
+  <p class="legend-note">
+    Lokasi merupakan titik referensi penelitian,
+    bukan stasiun LRT terkonfirmasi.
+  </p>
+</div>
+
+
+
+        <button class="primary" id="analyzeBtn">Analisis akses 15 menit ↗</button>
+
+
+        
+<button class="secondary" id="compareBtn">
+  Bandingkan koridor NS vs EW
+</button>
+
+
+        <p class="hint">
+          Kamu juga bisa klik langsung pada peta untuk memilih titik awal.
+          Gunakan lokasi yang berada di wilayah Bandung.
+        </p>
+        <p class="hint" id="originText">Titik awal: belum dipilih.</p>
+      </aside>
+
+      
+      <div class="map-column">
+        <section class="map-panel">
+          <div class="map-head">
+            <strong>Peta interaktif Bandung</strong>
+            <span>Klik peta untuk memilih titik</span>
+          </div>
+          <div id="map"></div>
+          <div class="map-note">
+            Peta © OpenStreetMap contributors. Titik fasilitas ditampilkan
+            setelah analisis dilakukan.
+          </div>
+        </section>
+
+        <section class="results result-panel" id="corridorComparison">
+          <h2>Perbandingan aksesibilitas koridor</h2>
+          <p class="empty">
+            Tekan tombol “Bandingkan koridor NS vs EW”
+            untuk menghitung akses fasilitas dari empat titik referensi.
+          </p>
+        </section>
+      </div>
+    </section>
+
+  
+
+
+    <section class="results" id="results">
+      <div class="stats">
+        <div class="stat"><span>Fasilitas terjangkau</span><strong>—</strong></div>
+        <div class="stat"><span>Jarak batas estimasi</span><strong>—</strong></div>
+        <div class="stat"><span>Waktu analisis</span><strong>15 mnt</strong></div>
+      </div>
+      <div class="result-panel">
+        <h2>Hasil analisis</h2>
+        <div class="empty">
+          Pilih titik awal dan tekan “Analisis akses 15 menit” untuk melihat hasil.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    MAPAY merupakan prototipe penelitian aksesibilitas perkotaan.
+    Waktu tempuh dihitung dari jaringan jalan yang tersedia dengan
+    asumsi kecepatan perjalanan, bukan kondisi lalu lintas langsung.
+    Kelengkapan data fasilitas dan keterhubungan jaringan dapat memengaruhi hasil.
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map("map").setView([-6.9175, 107.6191], 12);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    let origin = null;
+    let originMarker = null;
+    let facilityLayer = L.layerGroup().addTo(map);
+      
+let lrtReferenceLayer = L.layerGroup().addTo(map);
+const toggleLRT = document.getElementById("toggleLRT");
+
+toggleLRT.addEventListener("change", function () {
+  if (this.checked) {
+    lrtReferenceLayer.addTo(map);
+  } else {
+    map.removeLayer(lrtReferenceLayer);
+  }
+});
+
+
+fetch("/static/titik_lrt.json")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("File titik_lrt.json tidak ditemukan");
+    }
+    return response.json();
+  })
+  .then(points => {
+    points.forEach(point => {
+      const lat = Number(point.lat);
+      const lon = Number(point.lon);
+
+      if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+
+      const marker = L.circleMarker([lat, lon], {
+        radius: 8,
+        color: "#ffffff",
+        weight: 2,
+        fillColor: "#8b5cf6",
+        fillOpacity: 1
+      });
+
+
+
+      marker.bindPopup(
+        `<strong>${escapeHtml(point.name)}</strong><br>` +
+        `Koridor referensi: ${escapeHtml(point.route)}<br>` +
+        `<small>Bukan stasiun LRT terkonfirmasi.</small><br>` +
+        `<button type="button" class="use-lrt-point">` +
+        `Gunakan sebagai titik awal</button>`
+      );
+
+      marker.on("click", function (event) {
+        L.DomEvent.stopPropagation(event);
+        pilihTitikLRT(lat, lon, point.name);
+      });
+
+      marker.on("popupopen", function (event) {
+        const button = event.popup.getElement()
+          .querySelector(".use-lrt-point");
+
+        if (button) {
+          L.DomEvent.disableClickPropagation(button);
+
+          button.onclick = function () {
+            pilihTitikLRT(lat, lon, point.name);
+            marker.closePopup();
+          };
+        }
+      });
+
+      marker.addTo(lrtReferenceLayer);
+    });
+
+
+const warnaKoridor = {
+  NS: "#8b5cf6",
+  EW: "#0d9488"
+};
+
+["NS", "EW"].forEach(route => {
+  const titikKoridor = points.filter(
+    point => point.route === route
+  );
+
+  if (titikKoridor.length < 2) return;
+
+  const koordinat = titikKoridor.map(point => [
+    Number(point.lat),
+    Number(point.lon)
+  ]);
+
+  L.polyline(koordinat, {
+    color: warnaKoridor[route],
+    weight: 5,
+    opacity: 0.85,
+    dashArray: "10, 8"
+  })
+  .bindPopup(
+    `<strong>Koridor referensi ${route}</strong><br>` +
+    `<small>Garis penghubung ilustratif, bukan trase resmi LRT.</small>`
+  )
+  .addTo(lrtReferenceLayer);
+});
+
+
+    if (!toggleLRT.checked) {
+      map.removeLayer(lrtReferenceLayer);
+    }
+  })
+  .catch(error => console.error("Gagal memuat titik LRT:", error));
+
+
+function pilihTitikLRT(lat, lon, nama) {
+  setOrigin(Number(lat), Number(lon), nama);
+  map.setView([Number(lat), Number(lon)], 14);
+}
+
+
+    
+
+    const statusEl = document.getElementById("status");
+    const originText = document.getElementById("originText");
+    const analyzeBtn = document.getElementById("analyzeBtn");
+
+    function setOrigin(lat, lon, label = "Titik pilihan di peta") {
+      origin = { lat, lon };
+      if (originMarker) map.removeLayer(originMarker);
+
+      originMarker = L.marker([lat, lon]).addTo(map)
+        .bindPopup("Titik awal").openPopup();
+
+      originText.textContent =
+        `Titik awal: ${label} (${lat.toFixed(5)}, ${lon.toFixed(5)})`;
+    }
+
+    map.on("click", event => {
+      setOrigin(event.latlng.lat, event.latlng.lng);
+    });
+
+    async function checkServer() {
+      try {
+        const response = await fetch("/api/health");
+        if (!response.ok) throw new Error("Server bermasalah");
+        const data = await response.json();
+        statusEl.textContent =
+          `🟢 Terhubung · ${data.facilities} fasilitas`;
+      } catch (error) {
+        statusEl.textContent = "● Server belum terhubung";
+      }
+    }
+
+    document.getElementById("searchBtn").addEventListener("click", async () => {
+      const query = document.getElementById("address").value.trim();
+      if (!query) {
+        alert("Masukkan alamat terlebih dahulu.");
+        return;
+      }
+
+      const button = document.getElementById("searchBtn");
+      button.disabled = true;
+      button.textContent = "Mencari...";
+
+      try {
+        const response = await fetch(
+          "/api/geocode?q=" + encodeURIComponent(query)
+        );
+        const data = await response.json();
+
+        if (!response.ok) throw new Error(data.detail || "Alamat tidak ditemukan.");
+
+        setOrigin(data.lat, data.lon, data.address);
+        map.setView([data.lat, data.lon], 15);
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        button.disabled = false;
+        button.textContent = "Cari alamat";
+      }
+    });
+
+    document.getElementById("address").addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        document.getElementById("searchBtn").click();
+      }
+    });
+
+    analyzeBtn.addEventListener("click", async () => {
+      if (!origin) {
+        alert("Pilih titik awal dengan mencari alamat atau klik peta.");
+        return;
+      }
+
+      analyzeBtn.disabled = true;
+      analyzeBtn.textContent = "Sedang menganalisis...";
+
+      try {
+        const response = await fetch("/api/analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            lat: origin.lat,
+            lon: origin.lon,
+            mode: document.getElementById("mode").value,
+            category: document.getElementById("category").value
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || "Analisis gagal.");
+
+        showResults(data);
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        analyzeBtn.disabled = false;
+        analyzeBtn.textContent = "Analisis akses 15 menit ↗";
+      }
+    });
+
+    
+function showResults(data) {
+  facilityLayer.clearLayers();
+  facilityLayer.addTo(map);
+
+  // Tambahkan marker fasilitas dengan warna pink yang mencolok.
+  data.facilities.forEach(f => {
+    const lat = Number(f.lat);
+    const lon = Number(f.lon);
+
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+
+    const marker = L.circleMarker([lat, lon], {
+      radius: 8,
+      color: "#ffffff",
+      weight: 2,
+      fillColor: "#ff2d8d",
+      fillOpacity: 1,
+      opacity: 1,
+      interactive: true
+    }).bindPopup(
+      `<strong>${escapeHtml(f.name)}</strong><br>` +
+      `${escapeHtml(f.category)}<br>` +
+      `${f.minutes} menit · ${(f.distance_m / 1000).toFixed(2)} km`
+    );
+
+    facilityLayer.addLayer(marker);
+  });
+
+  // Pastikan marker berada di atas layer peta.
+  facilityLayer.eachLayer(marker => marker.bringToFront());
+
+  // Tampilkan jumlah marker di Console untuk pengecekan.
+  console.log("Fasilitas diterima:", data.facilities.length);
+  console.log("Marker ditampilkan:", facilityLayer.getLayers().length);
+
+  const modeName = data.mode === "walk" ? "Jalan kaki" : "Sepeda";
+  const distanceLimit = (data.speed_kmh * 0.25).toFixed(2);
+
+  document.getElementById("results").innerHTML = `
+    <div class="stats">
+      <div class="stat">
+        <span>Fasilitas terjangkau</span>
+        <strong>${data.total}</strong>
+      </div>
+      <div class="stat">
+        <span>Jarak batas estimasi</span>
+        <strong>${distanceLimit} km</strong>
+      </div>
+      <div class="stat">
+        <span>Moda perjalanan</span>
+        <strong style="font-size:18px">${modeName}</strong>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <h2>Fasilitas dalam estimasi 15 menit</h2>
+      <div class="category-counts">
+        ${Object.entries(data.counts).map(([name, count]) =>
+          `<span class="chip">${escapeHtml(name)}: ${count}</span>`
+        ).join("")}
+      </div>
+
+      <div class="facility-list">
+        ${data.facilities.slice(0, 40).map(f => `
+          <div class="facility">
+            <strong>${escapeHtml(f.name)}</strong>
+            <small>
+              ${escapeHtml(f.category)}<br>
+              ${f.minutes} menit · ${(f.distance_m / 1000).toFixed(2)} km
+            </small>
+          </div>
+        `).join("")}
+      </div>
+
+      ${data.total > 40
+        ? `<p class="hint">Menampilkan 40 dari ${data.total} fasilitas yang ditemukan.</p>`
+        : ""}
+
+      ${data.total === 0
+        ? `<p class="empty">Tidak ditemukan fasilitas yang terjangkau pada kategori ini berdasarkan jaringan dan data yang tersedia.</p>`
+        : ""}
+    </div>
+  `;
+}
+
+
+
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[char]);
+    }
+
+    checkServer();
+
+  // ==========================================
+// AUTOCOMPLETE PENCARIAN MAPAY
+// ==========================================
+
+const addressInput = document.getElementById("address");
+const suggestionsBox = document.getElementById("suggestions");
+
+let suggestTimer;
+let suggestController;
+
+addressInput.addEventListener("input", () => {
+  clearTimeout(suggestTimer);
+
+  if (suggestController) {
+    suggestController.abort();
+  }
+
+  const query = addressInput.value.trim();
+
+  if (query.length < 2) {
+    suggestionsBox.innerHTML = "";
+    suggestionsBox.classList.add("hidden");
+    return;
+  }
+
+  suggestTimer = setTimeout(async () => {
+    suggestController = new AbortController();
+
+    try {
+      const response = await fetch(
+        "/api/suggest?q=" + encodeURIComponent(query),
+        { signal: suggestController.signal }
+      );
+
+      if (!response.ok) return;
+
+      const data = await response.json();
+      suggestionsBox.innerHTML = "";
+
+      (data.results || []).forEach((place) => {
+        const item = document.createElement("div");
+        item.className = "suggestion-item";
+
+        const icon = document.createElement("span");
+        icon.textContent = "📍";
+
+        const details = document.createElement("div");
+
+        const name = document.createElement("div");
+        name.className = "suggestion-name";
+        name.textContent = place.name;
+
+        const address = document.createElement("div");
+        address.className = "suggestion-address";
+        address.textContent = place.address;
+
+        details.append(name, address);
+        item.append(icon, details);
+
+        item.addEventListener("click", () => {
+          addressInput.value = place.name;
+          suggestionsBox.classList.add("hidden");
+
+          setOrigin(
+            place.lat,
+            place.lon,
+            place.address
+          );
+
+          map.setView([place.lat, place.lon], 16);
+        });
+
+        suggestionsBox.appendChild(item);
+      });
+
+      suggestionsBox.classList.toggle(
+        "hidden",
+        !data.results || data.results.length === 0
+      );
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        console.error("Saran pencarian gagal:", error);
+      }
+    }
+  }, 150);
+});
+
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".search-wrap")) {
+    suggestionsBox.classList.add("hidden");
+  }
+});
+
+
+const compareBtn = document.getElementById("compareBtn");
+const comparisonPanel = document.getElementById("corridorComparison");
+
+const referencePoints = [
+  {
+    name: "Babakan Siliwangi",
+    route: "NS",
+    lat: -6.8851544,
+    lon: 107.6115122
+  },
+  {
+    name: "Margahayu",
+    route: "NS",
+    lat: -6.9717451,
+    lon: 107.5848004
+  },
+  {
+    name: "Terminal Leuwipanjang",
+    route: "EW",
+    lat: -6.94573,
+    lon: 107.59428
+  },
+  {
+    name: "Tegalluar",
+    route: "EW",
+    lat: -6.9839729,
+    lon: 107.6902414
+  }
+];
+
+compareBtn.addEventListener("click", async () => {
+  compareBtn.disabled = true;
+  compareBtn.textContent = "Menghitung perbandingan...";
+
+  comparisonPanel.innerHTML = `
+    <h2>Perbandingan aksesibilitas koridor</h2>
+    <p class="empty">Sedang menghitung akses fasilitas dari empat titik referensi...</p>
+  `;
+
+  try {
+    const results = [];
+
+    for (const point of referencePoints) {
+      const response = await fetch("/api/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          lat: point.lat,
+          lon: point.lon,
+          mode: document.getElementById("mode").value,
+          category: document.getElementById("category").value
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.detail || `Analisis ${point.name} gagal`);
+      }
+
+      results.push({ ...point, data });
+    }
+
+    const summaries = ["NS", "EW"].map(route => {
+      const points = results.filter(p => p.route === route);
+      const average = points.reduce(
+        (sum, p) => sum + p.data.total, 0
+      ) / points.length;
+
+      return { route, points, average };
+    });
+
+    comparisonPanel.innerHTML = `
+      <h2>Hasil perbandingan NS vs EW</h2>
+      <p class="hint">
+        Moda: ${escapeHtml(
+          document.getElementById("mode").selectedOptions[0].text
+        )} · Durasi: 15 menit
+      </p>
+
+      <div class="stats">
+        ${summaries.map(s => `
+          <div class="stat">
+            <span>Rata-rata fasilitas · ${s.route}</span>
+            <strong>${s.average.toFixed(1)}</strong>
+            <small>per titik referensi</small>
+          </div>
+        `).join("")}
+      </div>
+
+      <h2>Rincian tiap titik</h2>
+      <div class="facility-list">
+        ${results.map(p => `
+          <div class="facility">
+            <strong>${escapeHtml(p.name)}</strong>
+            <small>
+              Koridor ${p.route}<br>
+              Fasilitas terjangkau: <b>${p.data.total}</b><br>
+              ${Object.entries(p.data.counts || {}).map(
+                ([name, count]) =>
+                  `${escapeHtml(name)}: ${count}`
+              ).join("<br>")}
+            </small>
+          </div>
+        `).join("")}
+      </div>
+
+      <p class="hint">
+        Rata-rata dihitung dari dua titik referensi pada setiap koridor.
+        Fasilitas yang sama dapat terjangkau dari beberapa titik,
+        sehingga hasil ini bukan jumlah fasilitas unik per koridor.
+        Titik yang digunakan adalah referensi geografis, bukan
+        lokasi stasiun LRT yang telah terverifikasi.
+      </p>
+    `;
+  } catch (error) {
+    comparisonPanel.innerHTML = `
+      <h2>Perbandingan aksesibilitas koridor</h2>
+      <p class="empty">
+        Gagal menghitung perbandingan: ${escapeHtml(error.message)}
+      </p>
+    `;
+  } finally {
+    compareBtn.disabled = false;
+    compareBtn.textContent = "Bandingkan koridor NS vs EW";
+  }
+});
+
+
+  </script>
+</body>
+</html>

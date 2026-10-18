@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "route": "NS",
+        "name": "Babakan Siliwangi - Margahayu",
+        "system": "Greater Bandung LRT (2030)",
+        "status": "Rencana"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": []
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route": "EW",
+        "name": "Leuwipanjang - Tegalluar",
+        "system": "Greater Bandung LRT (2030)",
+        "status": "Rencana"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": []
+      }
+    }
+  ]
+}

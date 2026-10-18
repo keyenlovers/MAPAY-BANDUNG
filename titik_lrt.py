@@ -1,0 +1,43 @@
+import json
+from pathlib import Path
+
+# Koordinat akan diisi setelah lokasi diverifikasi.
+titik = [
+    {
+    "name": "Babakan Siliwangi (referensi halte bus)",
+    "route": "NS",
+    "lat": -6.8851544,
+    "lon": 107.6115122
+},
+    {
+    "name": "Margahayu (titik referensi wilayah)",
+    "route": "NS",
+    "lat": -6.9717451,
+    "lon": 107.5848004
+},
+    
+        {
+    "name": "Terminal Leuwipanjang",
+    "route": "EW",
+    "lat": -6.94573,
+    "lon": 107.59428
+},
+    
+    {
+    "name": "Tegalluar (titik referensi wilayah)",
+    "route": "EW",
+    "lat": -6.9839729,
+    "lon": 107.6902414
+},
+]
+
+output = Path("website/titik_lrt.json")
+output.parent.mkdir(parents=True, exist_ok=True)
+
+output.write_text(
+    json.dumps(titik, indent=2, ensure_ascii=False),
+    encoding="utf-8"
+)
+
+print(f"File dibuat: {output}")
+print("Koordinat belum diisi; verifikasi lokasi terlebih dahulu.")

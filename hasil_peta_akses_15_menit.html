@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f45b8b33a590eeb8d72afede4a0333f5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_f45b8b33a590eeb8d72afede4a0333f5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f45b8b33a590eeb8d72afede4a0333f5 = L.map(
+                "map_f45b8b33a590eeb8d72afede4a0333f5",
+                {
+                    center: [-6.91, 107.61],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_af5aa97a42239c70f8424ab3831f52bc = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_af5aa97a42239c70f8424ab3831f52bc.addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+            var tile_layer_d6a1da405e15d679d828510fc330c33e = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d6a1da405e15d679d828510fc330c33e.addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+            var circle_marker_0a38f5d499e5af925cd8cb6b943b867a = L.circleMarker(
+                [-6.95, 107.57],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_52a170a50de7422a53d527c50e06f6ed = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a72b4ca1a5b74f58b63409231c7259f1 = $(`<div id="html_a72b4ca1a5b74f58b63409231c7259f1" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 1</b><br>     Total fasilitas terjangkau: 1<br>     Pendidikan: 1<br>     Kesehatan: 0<br>     Ruang terbuka: 0<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_52a170a50de7422a53d527c50e06f6ed.setContent(html_a72b4ca1a5b74f58b63409231c7259f1);
+            
+        
+
+        circle_marker_0a38f5d499e5af925cd8cb6b943b867a.bindPopup(popup_52a170a50de7422a53d527c50e06f6ed)
+        ;
+
+        
+    
+    
+            circle_marker_0a38f5d499e5af925cd8cb6b943b867a.bindTooltip(
+                `<div>
+                     Titik 1: 1 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cb55e49eef1dd45fe54536db27a315dd = L.circleMarker(
+                [-6.95, 107.59],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_de58f59e6a68e4a399ad91b9b94c7ce5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0633ca019879bab8452e9761729efe73 = $(`<div id="html_0633ca019879bab8452e9761729efe73" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 2</b><br>     Total fasilitas terjangkau: 12<br>     Pendidikan: 5<br>     Kesehatan: 5<br>     Ruang terbuka: 0<br>     Belanja: 2<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_de58f59e6a68e4a399ad91b9b94c7ce5.setContent(html_0633ca019879bab8452e9761729efe73);
+            
+        
+
+        circle_marker_cb55e49eef1dd45fe54536db27a315dd.bindPopup(popup_de58f59e6a68e4a399ad91b9b94c7ce5)
+        ;
+
+        
+    
+    
+            circle_marker_cb55e49eef1dd45fe54536db27a315dd.bindTooltip(
+                `<div>
+                     Titik 2: 12 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d4e4f19e1a37eca690632d99c6ab7fe2 = L.circleMarker(
+                [-6.95, 107.61],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_abe545bdcdbd3dbb28acd64ff11a21d5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4590b7ced8fa3089152afa2b2da7ee14 = $(`<div id="html_4590b7ced8fa3089152afa2b2da7ee14" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 3</b><br>     Total fasilitas terjangkau: 19<br>     Pendidikan: 11<br>     Kesehatan: 2<br>     Ruang terbuka: 2<br>     Belanja: 4<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_abe545bdcdbd3dbb28acd64ff11a21d5.setContent(html_4590b7ced8fa3089152afa2b2da7ee14);
+            
+        
+
+        circle_marker_d4e4f19e1a37eca690632d99c6ab7fe2.bindPopup(popup_abe545bdcdbd3dbb28acd64ff11a21d5)
+        ;
+
+        
+    
+    
+            circle_marker_d4e4f19e1a37eca690632d99c6ab7fe2.bindTooltip(
+                `<div>
+                     Titik 3: 19 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_10c10b05008f9fea30ce91b48cf24209 = L.circleMarker(
+                [-6.95, 107.63],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_b5ac9965ae58b680b06f48e0ca7001dd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9cfefdf60efcc1907c065e37fe15e24f = $(`<div id="html_9cfefdf60efcc1907c065e37fe15e24f" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 4</b><br>     Total fasilitas terjangkau: 11<br>     Pendidikan: 2<br>     Kesehatan: 3<br>     Ruang terbuka: 1<br>     Belanja: 5<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_b5ac9965ae58b680b06f48e0ca7001dd.setContent(html_9cfefdf60efcc1907c065e37fe15e24f);
+            
+        
+
+        circle_marker_10c10b05008f9fea30ce91b48cf24209.bindPopup(popup_b5ac9965ae58b680b06f48e0ca7001dd)
+        ;
+
+        
+    
+    
+            circle_marker_10c10b05008f9fea30ce91b48cf24209.bindTooltip(
+                `<div>
+                     Titik 4: 11 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e7e1aea919e14c0be4b2bb3c11828396 = L.circleMarker(
+                [-6.95, 107.65],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_ac1babf46808674acaa03a03b2794f17 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_faf43c85338163bebc74892c343780e7 = $(`<div id="html_faf43c85338163bebc74892c343780e7" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 5</b><br>     Total fasilitas terjangkau: 9<br>     Pendidikan: 3<br>     Kesehatan: 0<br>     Ruang terbuka: 6<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_ac1babf46808674acaa03a03b2794f17.setContent(html_faf43c85338163bebc74892c343780e7);
+            
+        
+
+        circle_marker_e7e1aea919e14c0be4b2bb3c11828396.bindPopup(popup_ac1babf46808674acaa03a03b2794f17)
+        ;
+
+        
+    
+    
+            circle_marker_e7e1aea919e14c0be4b2bb3c11828396.bindTooltip(
+                `<div>
+                     Titik 5: 9 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2b1ffcd44f6355507f872718e31b66f0 = L.circleMarker(
+                [-6.95, 107.67],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_acb16544c84054358b49931d853a8317 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ed414e8c26a16ea7901a3b3ce6aff6f4 = $(`<div id="html_ed414e8c26a16ea7901a3b3ce6aff6f4" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 6</b><br>     Total fasilitas terjangkau: 8<br>     Pendidikan: 6<br>     Kesehatan: 1<br>     Ruang terbuka: 1<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_acb16544c84054358b49931d853a8317.setContent(html_ed414e8c26a16ea7901a3b3ce6aff6f4);
+            
+        
+
+        circle_marker_2b1ffcd44f6355507f872718e31b66f0.bindPopup(popup_acb16544c84054358b49931d853a8317)
+        ;
+
+        
+    
+    
+            circle_marker_2b1ffcd44f6355507f872718e31b66f0.bindTooltip(
+                `<div>
+                     Titik 6: 8 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dbdaf07b4497c84a364f2c7e22e3e1d8 = L.circleMarker(
+                [-6.93, 107.57],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_aa091acf8109eb1572bdf774612d15d3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bd9c5cb5650b4f206dacb7bb1e58e82c = $(`<div id="html_bd9c5cb5650b4f206dacb7bb1e58e82c" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 7</b><br>     Total fasilitas terjangkau: 3<br>     Pendidikan: 2<br>     Kesehatan: 0<br>     Ruang terbuka: 0<br>     Belanja: 1<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_aa091acf8109eb1572bdf774612d15d3.setContent(html_bd9c5cb5650b4f206dacb7bb1e58e82c);
+            
+        
+
+        circle_marker_dbdaf07b4497c84a364f2c7e22e3e1d8.bindPopup(popup_aa091acf8109eb1572bdf774612d15d3)
+        ;
+
+        
+    
+    
+            circle_marker_dbdaf07b4497c84a364f2c7e22e3e1d8.bindTooltip(
+                `<div>
+                     Titik 7: 3 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_000fff1b4b57b56d63aa888cb94e99b6 = L.circleMarker(
+                [-6.93, 107.59],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_2b2237bdf087397471d568b4f4f76ea2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e326d38f6686ca95b129d816668eee67 = $(`<div id="html_e326d38f6686ca95b129d816668eee67" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 8</b><br>     Total fasilitas terjangkau: 25<br>     Pendidikan: 21<br>     Kesehatan: 1<br>     Ruang terbuka: 1<br>     Belanja: 2<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_2b2237bdf087397471d568b4f4f76ea2.setContent(html_e326d38f6686ca95b129d816668eee67);
+            
+        
+
+        circle_marker_000fff1b4b57b56d63aa888cb94e99b6.bindPopup(popup_2b2237bdf087397471d568b4f4f76ea2)
+        ;
+
+        
+    
+    
+            circle_marker_000fff1b4b57b56d63aa888cb94e99b6.bindTooltip(
+                `<div>
+                     Titik 8: 25 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7d02fb2a279dc8fed8dbcaf5307b7821 = L.circleMarker(
+                [-6.93, 107.61],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_f7135c49665c32300987ce3bdd1d9a08 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0f4c0e7cd0db4eddf662ce757e0f20c0 = $(`<div id="html_0f4c0e7cd0db4eddf662ce757e0f20c0" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 9</b><br>     Total fasilitas terjangkau: 38<br>     Pendidikan: 24<br>     Kesehatan: 3<br>     Ruang terbuka: 2<br>     Belanja: 9<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_f7135c49665c32300987ce3bdd1d9a08.setContent(html_0f4c0e7cd0db4eddf662ce757e0f20c0);
+            
+        
+
+        circle_marker_7d02fb2a279dc8fed8dbcaf5307b7821.bindPopup(popup_f7135c49665c32300987ce3bdd1d9a08)
+        ;
+
+        
+    
+    
+            circle_marker_7d02fb2a279dc8fed8dbcaf5307b7821.bindTooltip(
+                `<div>
+                     Titik 9: 38 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a1789f279fa2805a2a5ac064ee5ae0b5 = L.circleMarker(
+                [-6.93, 107.63],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_ec4a1e4258db74b4fb0da48dc877fe38 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f88e94aed032d7cb458896b0df604c95 = $(`<div id="html_f88e94aed032d7cb458896b0df604c95" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 10</b><br>     Total fasilitas terjangkau: 2<br>     Pendidikan: 2<br>     Kesehatan: 0<br>     Ruang terbuka: 0<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_ec4a1e4258db74b4fb0da48dc877fe38.setContent(html_f88e94aed032d7cb458896b0df604c95);
+            
+        
+
+        circle_marker_a1789f279fa2805a2a5ac064ee5ae0b5.bindPopup(popup_ec4a1e4258db74b4fb0da48dc877fe38)
+        ;
+
+        
+    
+    
+            circle_marker_a1789f279fa2805a2a5ac064ee5ae0b5.bindTooltip(
+                `<div>
+                     Titik 10: 2 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fc1db1c13338ef1ff0963bf54fe15adc = L.circleMarker(
+                [-6.93, 107.65],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_7194184eda60f4f8fe708d0101f69236 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c35ce81c68a2f7b2745531e202f74910 = $(`<div id="html_c35ce81c68a2f7b2745531e202f74910" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 11</b><br>     Total fasilitas terjangkau: 8<br>     Pendidikan: 4<br>     Kesehatan: 1<br>     Ruang terbuka: 2<br>     Belanja: 1<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_7194184eda60f4f8fe708d0101f69236.setContent(html_c35ce81c68a2f7b2745531e202f74910);
+            
+        
+
+        circle_marker_fc1db1c13338ef1ff0963bf54fe15adc.bindPopup(popup_7194184eda60f4f8fe708d0101f69236)
+        ;
+
+        
+    
+    
+            circle_marker_fc1db1c13338ef1ff0963bf54fe15adc.bindTooltip(
+                `<div>
+                     Titik 11: 8 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d0818595bab7e6daeb64162135be5d7e = L.circleMarker(
+                [-6.93, 107.67],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_ddccb375ffe01d0793a3b0b578eb2a49 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6b315beb6cf4699ca6db616de057fbe9 = $(`<div id="html_6b315beb6cf4699ca6db616de057fbe9" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 12</b><br>     Total fasilitas terjangkau: 1<br>     Pendidikan: 1<br>     Kesehatan: 0<br>     Ruang terbuka: 0<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_ddccb375ffe01d0793a3b0b578eb2a49.setContent(html_6b315beb6cf4699ca6db616de057fbe9);
+            
+        
+
+        circle_marker_d0818595bab7e6daeb64162135be5d7e.bindPopup(popup_ddccb375ffe01d0793a3b0b578eb2a49)
+        ;
+
+        
+    
+    
+            circle_marker_d0818595bab7e6daeb64162135be5d7e.bindTooltip(
+                `<div>
+                     Titik 12: 1 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_931d95ae13a4421dbeddc390cb6f4637 = L.circleMarker(
+                [-6.91, 107.57],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_d94e484b4025c4ee0aae2e13b78b53e7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_08ae4a79a74e9f474beb0dd332868488 = $(`<div id="html_08ae4a79a74e9f474beb0dd332868488" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 13</b><br>     Total fasilitas terjangkau: 7<br>     Pendidikan: 4<br>     Kesehatan: 1<br>     Ruang terbuka: 1<br>     Belanja: 1<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_d94e484b4025c4ee0aae2e13b78b53e7.setContent(html_08ae4a79a74e9f474beb0dd332868488);
+            
+        
+
+        circle_marker_931d95ae13a4421dbeddc390cb6f4637.bindPopup(popup_d94e484b4025c4ee0aae2e13b78b53e7)
+        ;
+
+        
+    
+    
+            circle_marker_931d95ae13a4421dbeddc390cb6f4637.bindTooltip(
+                `<div>
+                     Titik 13: 7 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f114718bfd2f74bec3f38c3abf12f9b7 = L.circleMarker(
+                [-6.91, 107.59],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_2fe3cd7b66616e1a3c7d5c462eab9217 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_097a0dd63c71ce5ff62f198749fe8fae = $(`<div id="html_097a0dd63c71ce5ff62f198749fe8fae" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 14</b><br>     Total fasilitas terjangkau: 26<br>     Pendidikan: 11<br>     Kesehatan: 2<br>     Ruang terbuka: 5<br>     Belanja: 8<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_2fe3cd7b66616e1a3c7d5c462eab9217.setContent(html_097a0dd63c71ce5ff62f198749fe8fae);
+            
+        
+
+        circle_marker_f114718bfd2f74bec3f38c3abf12f9b7.bindPopup(popup_2fe3cd7b66616e1a3c7d5c462eab9217)
+        ;
+
+        
+    
+    
+            circle_marker_f114718bfd2f74bec3f38c3abf12f9b7.bindTooltip(
+                `<div>
+                     Titik 14: 26 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5ca32a0c125bb97006d4f3018954e51a = L.circleMarker(
+                [-6.91, 107.61],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_59a9978bcad626c1c4a68e862403e2a7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7edf145fa5a4c8c81ac79b0a54ab41cc = $(`<div id="html_7edf145fa5a4c8c81ac79b0a54ab41cc" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 15</b><br>     Total fasilitas terjangkau: 66<br>     Pendidikan: 23<br>     Kesehatan: 13<br>     Ruang terbuka: 23<br>     Belanja: 7<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_59a9978bcad626c1c4a68e862403e2a7.setContent(html_7edf145fa5a4c8c81ac79b0a54ab41cc);
+            
+        
+
+        circle_marker_5ca32a0c125bb97006d4f3018954e51a.bindPopup(popup_59a9978bcad626c1c4a68e862403e2a7)
+        ;
+
+        
+    
+    
+            circle_marker_5ca32a0c125bb97006d4f3018954e51a.bindTooltip(
+                `<div>
+                     Titik 15: 66 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cca0b7e9eb85c992e3f5cfbd828e9620 = L.circleMarker(
+                [-6.91, 107.63],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_507e284ab5f9af73404a441b5b0bf6be = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5d49d612f95df29a53d34bbe3299cab6 = $(`<div id="html_5d49d612f95df29a53d34bbe3299cab6" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 16</b><br>     Total fasilitas terjangkau: 41<br>     Pendidikan: 17<br>     Kesehatan: 6<br>     Ruang terbuka: 17<br>     Belanja: 1<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_507e284ab5f9af73404a441b5b0bf6be.setContent(html_5d49d612f95df29a53d34bbe3299cab6);
+            
+        
+
+        circle_marker_cca0b7e9eb85c992e3f5cfbd828e9620.bindPopup(popup_507e284ab5f9af73404a441b5b0bf6be)
+        ;
+
+        
+    
+    
+            circle_marker_cca0b7e9eb85c992e3f5cfbd828e9620.bindTooltip(
+                `<div>
+                     Titik 16: 41 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_663caf6f00546a974d3d7170e5bbdddb = L.circleMarker(
+                [-6.91, 107.65],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_f4630b4e75d26eeee91f405c6b781762 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fdcb6d731fad10ea3f55e1b5b42881f6 = $(`<div id="html_fdcb6d731fad10ea3f55e1b5b42881f6" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 17</b><br>     Total fasilitas terjangkau: 21<br>     Pendidikan: 10<br>     Kesehatan: 8<br>     Ruang terbuka: 0<br>     Belanja: 3<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_f4630b4e75d26eeee91f405c6b781762.setContent(html_fdcb6d731fad10ea3f55e1b5b42881f6);
+            
+        
+
+        circle_marker_663caf6f00546a974d3d7170e5bbdddb.bindPopup(popup_f4630b4e75d26eeee91f405c6b781762)
+        ;
+
+        
+    
+    
+            circle_marker_663caf6f00546a974d3d7170e5bbdddb.bindTooltip(
+                `<div>
+                     Titik 17: 21 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c7fefe9f28d9dee849bc8b0d6450fc4a = L.circleMarker(
+                [-6.91, 107.67],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_91ce59274e4146536678c71edb251391 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f696084876267cf6932453035e481ee6 = $(`<div id="html_f696084876267cf6932453035e481ee6" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 18</b><br>     Total fasilitas terjangkau: 7<br>     Pendidikan: 5<br>     Kesehatan: 0<br>     Ruang terbuka: 2<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_91ce59274e4146536678c71edb251391.setContent(html_f696084876267cf6932453035e481ee6);
+            
+        
+
+        circle_marker_c7fefe9f28d9dee849bc8b0d6450fc4a.bindPopup(popup_91ce59274e4146536678c71edb251391)
+        ;
+
+        
+    
+    
+            circle_marker_c7fefe9f28d9dee849bc8b0d6450fc4a.bindTooltip(
+                `<div>
+                     Titik 18: 7 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e6afcd08d8c3d31c90fe334181abd585 = L.circleMarker(
+                [-6.89, 107.57],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_a23de2915b1b5f2ff2dc9c0de36034ac = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_11633d2211046c11bb8fcd27158c1948 = $(`<div id="html_11633d2211046c11bb8fcd27158c1948" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 19</b><br>     Total fasilitas terjangkau: 4<br>     Pendidikan: 0<br>     Kesehatan: 0<br>     Ruang terbuka: 3<br>     Belanja: 1<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_a23de2915b1b5f2ff2dc9c0de36034ac.setContent(html_11633d2211046c11bb8fcd27158c1948);
+            
+        
+
+        circle_marker_e6afcd08d8c3d31c90fe334181abd585.bindPopup(popup_a23de2915b1b5f2ff2dc9c0de36034ac)
+        ;
+
+        
+    
+    
+            circle_marker_e6afcd08d8c3d31c90fe334181abd585.bindTooltip(
+                `<div>
+                     Titik 19: 4 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ee50aa07b92d6043bad137ea7e77ae7c = L.circleMarker(
+                [-6.89, 107.59],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_82cbf9eab7ff7a863f21f97858392c06 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_15bda7eaad107694f986af272c336ebd = $(`<div id="html_15bda7eaad107694f986af272c336ebd" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 20</b><br>     Total fasilitas terjangkau: 6<br>     Pendidikan: 2<br>     Kesehatan: 3<br>     Ruang terbuka: 1<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_82cbf9eab7ff7a863f21f97858392c06.setContent(html_15bda7eaad107694f986af272c336ebd);
+            
+        
+
+        circle_marker_ee50aa07b92d6043bad137ea7e77ae7c.bindPopup(popup_82cbf9eab7ff7a863f21f97858392c06)
+        ;
+
+        
+    
+    
+            circle_marker_ee50aa07b92d6043bad137ea7e77ae7c.bindTooltip(
+                `<div>
+                     Titik 20: 6 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_73eaf617d4a906a874d7f944129f55dc = L.circleMarker(
+                [-6.89, 107.61],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_bcdb7d1cdd706497316c21c34b6b2126 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_031e6283f54fc10c2efd49f7989be2d7 = $(`<div id="html_031e6283f54fc10c2efd49f7989be2d7" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 21</b><br>     Total fasilitas terjangkau: 62<br>     Pendidikan: 6<br>     Kesehatan: 6<br>     Ruang terbuka: 44<br>     Belanja: 6<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_bcdb7d1cdd706497316c21c34b6b2126.setContent(html_031e6283f54fc10c2efd49f7989be2d7);
+            
+        
+
+        circle_marker_73eaf617d4a906a874d7f944129f55dc.bindPopup(popup_bcdb7d1cdd706497316c21c34b6b2126)
+        ;
+
+        
+    
+    
+            circle_marker_73eaf617d4a906a874d7f944129f55dc.bindTooltip(
+                `<div>
+                     Titik 21: 62 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cf2d62c2da052e9c5a46573440d40128 = L.circleMarker(
+                [-6.89, 107.63],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_ae808aaf4f6e9a218186b30713a84184 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_849fd1540e5787be4352ff4fcd80f068 = $(`<div id="html_849fd1540e5787be4352ff4fcd80f068" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 22</b><br>     Total fasilitas terjangkau: 36<br>     Pendidikan: 20<br>     Kesehatan: 2<br>     Ruang terbuka: 10<br>     Belanja: 4<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_ae808aaf4f6e9a218186b30713a84184.setContent(html_849fd1540e5787be4352ff4fcd80f068);
+            
+        
+
+        circle_marker_cf2d62c2da052e9c5a46573440d40128.bindPopup(popup_ae808aaf4f6e9a218186b30713a84184)
+        ;
+
+        
+    
+    
+            circle_marker_cf2d62c2da052e9c5a46573440d40128.bindTooltip(
+                `<div>
+                     Titik 22: 36 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6c1fcfc8ba66fde583891d2631f2329d = L.circleMarker(
+                [-6.89, 107.65],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_d91d6ed3d04ab5f0431d0df43b10a2c6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_163d72d49ae502185c68eb80b4e55a8d = $(`<div id="html_163d72d49ae502185c68eb80b4e55a8d" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 23</b><br>     Total fasilitas terjangkau: 1<br>     Pendidikan: 1<br>     Kesehatan: 0<br>     Ruang terbuka: 0<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_d91d6ed3d04ab5f0431d0df43b10a2c6.setContent(html_163d72d49ae502185c68eb80b4e55a8d);
+            
+        
+
+        circle_marker_6c1fcfc8ba66fde583891d2631f2329d.bindPopup(popup_d91d6ed3d04ab5f0431d0df43b10a2c6)
+        ;
+
+        
+    
+    
+            circle_marker_6c1fcfc8ba66fde583891d2631f2329d.bindTooltip(
+                `<div>
+                     Titik 23: 1 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c5a226add45a43b43c28cbae6efdfdf7 = L.circleMarker(
+                [-6.89, 107.67],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_f18e3864abe15735702586372ac1c46a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_02c617f9356b05a21fd717f06ba37021 = $(`<div id="html_02c617f9356b05a21fd717f06ba37021" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 24</b><br>     Total fasilitas terjangkau: 0<br>     Pendidikan: 0<br>     Kesehatan: 0<br>     Ruang terbuka: 0<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_f18e3864abe15735702586372ac1c46a.setContent(html_02c617f9356b05a21fd717f06ba37021);
+            
+        
+
+        circle_marker_c5a226add45a43b43c28cbae6efdfdf7.bindPopup(popup_f18e3864abe15735702586372ac1c46a)
+        ;
+
+        
+    
+    
+            circle_marker_c5a226add45a43b43c28cbae6efdfdf7.bindTooltip(
+                `<div>
+                     Titik 24: 0 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_413b31940e763a5db4a0d4277baea031 = L.circleMarker(
+                [-6.87, 107.57],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_74a7bb9976530a3444100c2a40171f21 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f59fe2c08647b1520c3413c572bd34e9 = $(`<div id="html_f59fe2c08647b1520c3413c572bd34e9" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 25</b><br>     Total fasilitas terjangkau: 10<br>     Pendidikan: 6<br>     Kesehatan: 3<br>     Ruang terbuka: 0<br>     Belanja: 1<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_74a7bb9976530a3444100c2a40171f21.setContent(html_f59fe2c08647b1520c3413c572bd34e9);
+            
+        
+
+        circle_marker_413b31940e763a5db4a0d4277baea031.bindPopup(popup_74a7bb9976530a3444100c2a40171f21)
+        ;
+
+        
+    
+    
+            circle_marker_413b31940e763a5db4a0d4277baea031.bindTooltip(
+                `<div>
+                     Titik 25: 10 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4b98c95448b347ab839d8cffd60ab037 = L.circleMarker(
+                [-6.87, 107.59],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_31700853c631ea5b7defae94a08176d6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e02c9f1ac02369a416f0f15e2d2ef380 = $(`<div id="html_e02c9f1ac02369a416f0f15e2d2ef380" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 26</b><br>     Total fasilitas terjangkau: 15<br>     Pendidikan: 7<br>     Kesehatan: 2<br>     Ruang terbuka: 3<br>     Belanja: 3<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_31700853c631ea5b7defae94a08176d6.setContent(html_e02c9f1ac02369a416f0f15e2d2ef380);
+            
+        
+
+        circle_marker_4b98c95448b347ab839d8cffd60ab037.bindPopup(popup_31700853c631ea5b7defae94a08176d6)
+        ;
+
+        
+    
+    
+            circle_marker_4b98c95448b347ab839d8cffd60ab037.bindTooltip(
+                `<div>
+                     Titik 26: 15 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1ce923d68abefee4609ab10a7cb1bfe3 = L.circleMarker(
+                [-6.87, 107.61],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_38ab45a8d13ce7c67548fd0cc19225a4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_93cd409a6e8abe9029cb9814eee7c117 = $(`<div id="html_93cd409a6e8abe9029cb9814eee7c117" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 27</b><br>     Total fasilitas terjangkau: 11<br>     Pendidikan: 3<br>     Kesehatan: 2<br>     Ruang terbuka: 6<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_38ab45a8d13ce7c67548fd0cc19225a4.setContent(html_93cd409a6e8abe9029cb9814eee7c117);
+            
+        
+
+        circle_marker_1ce923d68abefee4609ab10a7cb1bfe3.bindPopup(popup_38ab45a8d13ce7c67548fd0cc19225a4)
+        ;
+
+        
+    
+    
+            circle_marker_1ce923d68abefee4609ab10a7cb1bfe3.bindTooltip(
+                `<div>
+                     Titik 27: 11 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_51f43b0365aa6a8b03acba91cd479d3c = L.circleMarker(
+                [-6.87, 107.63],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_2462565b735553fbf5df3456ebc700a3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_803f7723486ced07d2fc0d79424b03f1 = $(`<div id="html_803f7723486ced07d2fc0d79424b03f1" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 28</b><br>     Total fasilitas terjangkau: 1<br>     Pendidikan: 0<br>     Kesehatan: 0<br>     Ruang terbuka: 1<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_2462565b735553fbf5df3456ebc700a3.setContent(html_803f7723486ced07d2fc0d79424b03f1);
+            
+        
+
+        circle_marker_51f43b0365aa6a8b03acba91cd479d3c.bindPopup(popup_2462565b735553fbf5df3456ebc700a3)
+        ;
+
+        
+    
+    
+            circle_marker_51f43b0365aa6a8b03acba91cd479d3c.bindTooltip(
+                `<div>
+                     Titik 28: 1 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_432c6b3f91dc6fb87876f39ae585b5f1 = L.circleMarker(
+                [-6.87, 107.65],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_106464cf8f0db80e560326f8121cc0d8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6df3f6622844dec6a4f464871fca52d6 = $(`<div id="html_6df3f6622844dec6a4f464871fca52d6" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 29</b><br>     Total fasilitas terjangkau: 1<br>     Pendidikan: 0<br>     Kesehatan: 0<br>     Ruang terbuka: 1<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_106464cf8f0db80e560326f8121cc0d8.setContent(html_6df3f6622844dec6a4f464871fca52d6);
+            
+        
+
+        circle_marker_432c6b3f91dc6fb87876f39ae585b5f1.bindPopup(popup_106464cf8f0db80e560326f8121cc0d8)
+        ;
+
+        
+    
+    
+            circle_marker_432c6b3f91dc6fb87876f39ae585b5f1.bindTooltip(
+                `<div>
+                     Titik 29: 1 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d3387ae07ba24b0bf82cfd70cbab91a4 = L.circleMarker(
+                [-6.87, 107.67],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+        
+    
+        var popup_449afe82b74a00a8384bdb8a46381bb4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_75ba9a0ea6cd1deb1a45b7e081134688 = $(`<div id="html_75ba9a0ea6cd1deb1a45b7e081134688" style="width: 100.0%; height: 100.0%;">     <b>Titik sampel 30</b><br>     Total fasilitas terjangkau: 0<br>     Pendidikan: 0<br>     Kesehatan: 0<br>     Ruang terbuka: 0<br>     Belanja: 0<br>     Lainnya: 0<br>     Jarak maksimum: 1125 meter     </div>`)[0];
+                popup_449afe82b74a00a8384bdb8a46381bb4.setContent(html_75ba9a0ea6cd1deb1a45b7e081134688);
+            
+        
+
+        circle_marker_d3387ae07ba24b0bf82cfd70cbab91a4.bindPopup(popup_449afe82b74a00a8384bdb8a46381bb4)
+        ;
+
+        
+    
+    
+            circle_marker_d3387ae07ba24b0bf82cfd70cbab91a4.bindTooltip(
+                `<div>
+                     Titik 30: 0 fasilitas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_ee29eed578ce9c1f144f5721754e90d8_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_af5aa97a42239c70f8424ab3831f52bc,
+                    "Peta abu-abu" : tile_layer_d6a1da405e15d679d828510fc330c33e,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_ee29eed578ce9c1f144f5721754e90d8 = L.control.layers(
+                layer_control_ee29eed578ce9c1f144f5721754e90d8_layers.base_layers,
+                layer_control_ee29eed578ce9c1f144f5721754e90d8_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_f45b8b33a590eeb8d72afede4a0333f5);
+
+        
+</script>
+</html>

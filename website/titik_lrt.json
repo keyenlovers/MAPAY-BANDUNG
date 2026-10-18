@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Babakan Siliwangi (referensi halte bus)",
+    "route": "NS",
+    "lat": -6.8851544,
+    "lon": 107.6115122
+  },
+  {
+    "name": "Margahayu (titik referensi wilayah)",
+    "route": "NS",
+    "lat": -6.9717451,
+    "lon": 107.5848004
+  },
+  {
+    "name": "Terminal Leuwipanjang",
+    "route": "EW",
+    "lat": -6.94573,
+    "lon": 107.59428
+  },
+  {
+    "name": "Tegalluar (titik referensi wilayah)",
+    "route": "EW",
+    "lat": -6.9839729,
+    "lon": 107.6902414
+  }
+]
